@@ -60,6 +60,43 @@
       $('form').append(`<input type="submit" onclick="window.close();　class="mt-4 btn btn-primary" value="申請">`);
     })
 
+    function sendText(text) {
+            liff.sendMessages([{
+                'type': 'text',
+                'text': text
+            }]).then(function () {
+                liff.closeWindow();
+            }).catch(function (error) {
+                window.alert('Failed to send message ' + error);
+            });
+        }
+        
+        const params = (new URL(document.location)).searchParams;
+        const key = params.get('key');
+
+     $(function () {
+            $('form').submit(function () {
+                const name    = $('input[name="name"]').val();
+                const udetate    = $('input[name="udetate"]').val();
+                const fukkin   = $('input[name="fukkin"]').val();
+                const haikin    = $('input[name="haikin"]').val();
+                const sukuwat    = $('input[name="sukuwat"]').val();
+                // const number = $('input[name="number"]').val();
+                // const classes  = $('input[name="classes"]').val();
+                // const mail  = $('input[name="mail"]').val();
+                // const whereto = $('input[name="whereto"]').val();
+                // const whento = $('input[name="whento"]').val();
+                // const type1 = $('input[name="type1"]').val();
+                // const type2 = $('input[name="type2"]').val();
+                // const notice = $('input[name="notice"]').val();
+                
+                const msg = `${name}\n${number}\n${classes}\n${mail}\n${whereto}\n${whento}\n${type1}\n${type2}\n${notice}`;
+                sendText(msg);
+
+                return false;
+            });
+        });
+
     $('form').submit(function( event ) {
       event.preventDefault();
       $.post( 'https://script.google.com/macros/s/AKfycbyr8v9ei0UfUhgf8LGCOiGe_suHj196jRqEn6m5BB0gzLJTNm97X1DlttB94LsuXZAs/exec', $('form').serialize() );
