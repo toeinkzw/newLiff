@@ -37,6 +37,7 @@
             </select>
     </div>
     <input type="submit" onclick="window.close();　class="mt-4 btn btn-primary" value="申請/submit">
+    <button id="btn">Submit</button>
   </form>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -60,6 +61,15 @@
       $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
       $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
       $('form').append(`<input type="submit" onclick="window.close();　class="mt-4 btn btn-primary" value="申請/submit">`);
+    })
+
+    var btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function() {
+      alert(document.myform.mytext.value);
+  
+      //submit()でフォームの内容を送信
+      document.myform.submit();
     })
     
 
