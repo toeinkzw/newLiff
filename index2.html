@@ -48,7 +48,6 @@
                 <option value="その他（特記事項に記入）/Others(FullfillInNote)">その他（Fullfill in Note）/Others(FillInBelow)</option>
             </select>
     </div>
-    <input type="submit" onclick="window.close();　class="mt-4 btn btn-primary" value="申請/submit">
     <button id="btn">Submit</button>
   </form>
 
@@ -71,7 +70,7 @@
       const idToken = liff.getDecodedIDToken();
       const userId = idToken.sub;
       $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
-      $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
+//      $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
       $('form').append(`<input type="submit" onclick="window.close();　class="mt-4 btn btn-primary" value="申請/submit">`);
     })
 
