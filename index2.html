@@ -64,10 +64,10 @@
       console.log(err);
     });
 
-    // liff.ready.then(() => {
-    //   if (!liff.isLoggedIn()) {
-    //     liff.login();
-    //   }
+    liff.ready.then(() => {
+      if (!liff.isLoggedIn()) {
+        liff.login();
+      }
       const idToken = liff.getDecodedIDToken();
       const userId = idToken.sub;
       $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
