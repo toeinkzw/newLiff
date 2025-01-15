@@ -100,6 +100,7 @@
 
      $(function () {
             $('form').submit(function () {
+                const date    = new date().val();
                 const name    = $('input[name="name"]').val();
                 const classes    = $('input[name="classes"]').val();
                 const stunum   = $('input[name="stunum"]').val();
@@ -122,7 +123,7 @@
                 // const type2 = $('input[name="type2"]').val();
                 // const notice = $('input[name="notice"]').val();
                 
-                const msg = `${name}\n${classes}\n${stunum}\n${whereto}\n${whento}\n${note}\n${doc1}\n${doc2}\n${nihongo\n${eigo}\n${attachment}`;
+                const msg = `${date}\${name}\n${classes}\n${stunum}\n${whereto}\n${whento}\n${note}\n${doc1}\n${doc2}\n${nihongo\n${eigo}\n${attachment}`;
                 sendText(msg);
 
                 return false;
