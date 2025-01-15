@@ -10,56 +10,32 @@
 </head>
 <body>
   <form class="w-75 mx-auto">
-    <p class="mt-3">*名前（漢字か拼音）/Name（AlphabetOrKatakana)</p>
+    <p class="mt-3">名前</p>
     <div>
         <input class="form-control w-100 mt-1" name="name" placeholder="" required>
     </div>
-    <p class="mt-3">クラス/Class</p>
+    <p class="mt-3">クラス</p>
     <div>
-        <input class="form-control w-100 mt-1" name="classed" required>
+        <input class="form-control w-100 mt-1" name="udetate" >
     </div>
-    <p class="mt-3">学籍番号/StudentNumber</p>
+    <p class="mt-3">学籍番号</p>
     <div>
-        <input class="form-control w-100 mt-1" name="stunum" >
+        <input class="form-control w-100 mt-1" name="fukkin" >
     </div>
-        <p class="mt-3">提出先/WhereToHandIn（1回の申請では1つの提出先のみ/OneApplyOnePlace)</p>
+    <p class="mt-3">特記事項</p>
     <div>
-        <input class="form-control w-100 mt-1" name="whereto" >
+        <input class="form-control w-100 mt-1" name="haikin" >
     </div>
-    <p class="mt-3">受け取り必要日/WhenToObtain</p>
+    <p class="mt-3">証明書の種類</p>
     <div>
-       <select name="whento">
-                <option value="3営業日後/AfterTHREEWoringDay">今日から3営業日後/AfterTHREEWoringDay</option>
-                <option value="2営業日後/AfterTWOWoringDay">今日から2営業日後/AfterTWOWoringDay（提出後すぐに事務室に来ること/Come to school office immediately after submitting）</option>
-                <option value="次の営業日/NextWorkingDay">次の営業日/NextWorkingDay"次の営業日/NextWokingDay（提出後すぐに事務室に来ること/Come to school office immediately after submitting）</option>
-            </select>
-    </div>
-    <p class="mt-3">特記事項/note</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="note" >
-    </div>
-    <p class="mt-3">証明書の種類/TypeOfCertificate -1-</p>
-    <div>
-        <select name="doc1">
+        <select name="sukuwat">
                 <option value="在学証明書/CertificateOfEnrollement">在学証明書/CertificateOfEnrollement</option>
                 <option value="卒業（見込み）証明書/CertificateOf(Expected)Graduation">卒業（見込み）証明書/CertificateOf(Expected)Graduation</option>
                 <option value="出席成績証明書/CertificateOfAttendanceAndTranscript">出席成績証明書/CertificateOfAttendanceAndTranscript</option>
-                <option value="推薦書/LetterOfReccomendation">推薦書/LetterOfReccomendation(NeedMoreThan90%Attendance)</option>
-                <option value="その他/Others">その他（特記事項に記入）/Others(FillInNote)</option>
+                <option value="推薦書/LetterOfReccomendation(NeedMoreThan90%Attendance)">推薦書/LetterOfReccomendation(NeedMoreThan90%Attendance)</option>
+                <option value="その他（下の欄に記入）/Others(FillInBelow)">その他（下の欄に記入）/Others(FillInBelow)</option>
             </select>
     </div>
-        <p class="mt-3">証明書の種類/TypeOfCertificate -2-</p>
-    <div>
-        <select name="doc2">
-                <option value="No">無し/No</option>
-                <option value="在学証明書/CertificateOfEnrollement">在学証明書/CertificateOfEnrollement</option>
-                <option value="卒業（見込み）証明書/CertificateOf(Expected)Graduation">卒業（見込み）証明書/CertificateOf(Expected)Graduation</option>
-                <option value="出席成績証明書/CertificateOfAttendanceAndTranscript">出席成績証明書/CertificateOfAttendanceAndTranscript</option>
-                <option value="推薦書/LetterOfReccomendation">推薦書/LetterOfReccomendation(NeedMoreThan90%Attendance)</option>
-                <option value="その他/Others">その他（特記事項に記入）/Others(FillInNote)</option>
-            </select>
-    </div>
-        <button id="btn">Submit</button>
   </form>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -81,17 +57,8 @@
       const idToken = liff.getDecodedIDToken();
       const userId = idToken.sub;
       $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
-      $('form').append(`<input type="submit" onclick="window.close();　class="mt-4 btn btn-primary" value="申請 submit">`);
-//      $('form').append(`<input type="submit"　class="mt-4 btn btn-primary" value="申請/submit">`);
-    })
-
-        var btn = document.getElementById('btn');
-
-    btn.addEventListener('click', function() {
-      alert(document.myform.mytext.value);
-  
-      //submit()でフォームの内容を送信
-      document.myform.submit();
+      $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
+      $('form').append(`<input type="submit" onclick="window.close();　class="mt-4 btn btn-primary" value="申請/submit">`);
     })
 
     function sendText(text) {
@@ -110,19 +77,13 @@
 
      $(function () {
             $('form').submit(function () {
-                const date    = new date().val();
                 const name    = $('input[name="name"]').val();
-                const classes    = $('input[name="classes"]').val();
-                const stunum   = $('input[name="stunum"]').val();
-                const whereto   = $('input[name="whereto"]').val();
-                const whento   = $('input[name="whento"]').val();
-                const note    = $('input[name="note"]').val();
-                const doc1    = $('select[name="doc1"]').val();
-                const doc2    = $('select[name="doc2"]').val();
-                const nihongo = "証明書申請を受け付けました。急ぎでなければ完了通知を受け取ったら事務室に来てください。"
-                const eigo = "Your applyment Succeeded. Come to school office and pick up after our message if not in a hurry."
-                const attachment ="添付ファイルは直接LINEで送るか、下記メールアドレスへ。If send attachment file, through Line or mail below; mail@gmail.com"
-              
+                const udetate    = $('input[name="udetate"]').val();
+                const fukkin   = $('input[name="fukkin"]').val();
+                const haikin    = $('input[name="haikin"]').val();
+                const sukuwat    = $('select[name="sukuwat"]').val();
+                const nihongo = "証明書申請を受け付けました。完了通知を受け取ったら事務室に来てください。"
+                const eigo = "Your applyment Succeeded. Come to school office and pick up after our message."
               
                 // const number = $('input[name="number"]').val();
                 // const classes  = $('input[name="classes"]').val();
@@ -133,7 +94,7 @@
                 // const type2 = $('input[name="type2"]').val();
                 // const notice = $('input[name="notice"]').val();
                 
-                const msg = `${date}\${name}\n${classes}\n${stunum}\n${whereto}\n${whento}\n${note}\n${doc1}\n${doc2}\n${nihongo\n${eigo}\n${attachment}`;
+                const msg = `${name}\n${udetate}\n${fukkin}\n${haikin}\n${sukuwat}\n${nihongo}\n${eigo}`;
                 sendText(msg);
 
                 return false;
