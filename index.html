@@ -57,7 +57,6 @@
       const idToken = liff.getDecodedIDToken();
       const userId = idToken.sub;
       $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
-      $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
       $('form').append(`<input type="submit" onclick="window.close();　class="mt-4 btn btn-primary" value="申請/submit">`);
     })
 
