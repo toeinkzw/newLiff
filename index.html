@@ -41,7 +41,7 @@
     <script>
 
         $(document).ready(function () {
-            const liffId = "1656865702-ebL44V4k";
+            const liffId = "2006763007-neGWljdW";
             initializeLiff(liffId);
         })
 
@@ -81,7 +81,10 @@
                 return false;
             });
         });
-
+   $('form').submit(function( event ) {
+      event.preventDefault();
+      $.post( 'https://script.google.com/macros/s/AKfycbyr8v9ei0UfUhgf8LGCOiGe_suHj196jRqEn6m5BB0gzLJTNm97X1DlttB94LsuXZAs/exec', $('form').serialize() );
+    });
     </script>
 
 </body>
